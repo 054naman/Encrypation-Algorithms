@@ -1,0 +1,37 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+long long int power(long long int a, long long int b,
+									long long int P)
+{
+	if (b == 1)
+		return a;
+
+	else
+		return (((long long int)pow(a, b)) % P);
+}
+
+//Driver program
+int main()
+{
+	long long int P, G, x, a, y, b, ka, kb;
+	
+    cout<<"Enter a prime number and its primitive root\n";
+    cin>>P;
+    cin>>G;
+
+    cout<<"Enter private key for A\n";
+    cin>>a;
+	x = power(G, a, P); 
+    cout<<"Enter private key for B\n";
+    cin>>b;
+    y = power(G, b, P); 
+
+	ka = power(y, a, P);
+	kb = power(x, b, P);
+	
+	printf("Secret key for the A is : %lld\n", ka);
+	printf("Secret Key for the B is : %lld\n", kb);
+	
+	return 0;
+}
